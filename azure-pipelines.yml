@@ -1,0 +1,8 @@
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: templates
+
+jobs:
+- template: pipelines/terraform.infra.azure-pipelines.yml@templates
