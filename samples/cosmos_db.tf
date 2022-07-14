@@ -1,4 +1,4 @@
-resource "azurerm_cosmosdb_account" "cosmosdb" {
+resource "azurerm_cosmosdb_account" "cosmosdb_sample" {
   name                = "${var.project_name}${var.environment}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
@@ -21,20 +21,36 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
     ServiceName = "${var.project_name}${var.environment}"
   }
 }
-resource "azurerm_cosmosdb_sql_database" "sql_db" {
+output "cosmosdb_sample_endpoint" {
+  value       = azurerm_cosmosdb_account.cosmosdb_sample.endpoint
+  description = "CosmosDB sample endpoint"
+}
+
+resource "azurerm_cosmosdb_sql_database" "sql_db_sample" {
   name                = "sample"
   resource_group_name = azurerm_resource_group.rg.name
   account_name        = azurerm_cosmosdb_account.cosmosdb.name
 }
-resource "azurerm_cosmosdb_sql_container" "container" {
+output "sql_db_sample_name" {
+  value       = azurerm_cosmosdb_sql_database.sql_db_sample.name
+  description = "DB sample name"
+}
+
+resource "azurerm_cosmosdb_sql_container" "container_sample" {
   name                = "sample"
   resource_group_name = azurerm_resource_group.rg.name
   account_name        = azurerm_cosmosdb_account.cosmosdb.name
   database_name       = azurerm_cosmosdb_sql_database.sql_db.name
   partition_key_path  = "/id"
+  throughput          = 400
 }
-resource "azurerm_key_vault_secret" "cosmos_db_key" {
+output "container_sample_name" {
+  value       = azurerm_cosmosdb_sql_container.container_sample.name
+  description = "Container sample name"
+}
+
+resource "azurerm_key_vault_secret" "cosmos_db_key_sample" {
   name         = "cosmos-db-key-${var.environment}"
-  value        = azurerm_cosmosdb_account.cosmosdb.primary_key
+  value        = azurerm_cosmosdb_account.cosmosdb_sample.primary_key
   key_vault_id = azurerm_key_vault.kv.id
 }

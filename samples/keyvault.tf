@@ -1,4 +1,4 @@
-resource "azurerm_key_vault" "kv" {
+resource "azurerm_key_vault" "kv_sample" {
   name                = "${var.project_name}${var.environment}"
   location            = var.location
   resource_group_name = azurerm_resource_group.rg.name

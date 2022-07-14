@@ -4,13 +4,13 @@ variable "project_name" {
 variable "environments" {
   default = {
     dev = {
-      location = "eastus2"
+      location = "eastus"
     }
     hml = {
-      location = "eastus2"
+      location = "eastus"
     }
     prod = {
-      location = "eastus2"
+      location = "eastus"
     }
   }
 }

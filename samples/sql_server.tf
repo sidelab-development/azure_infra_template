@@ -1,4 +1,4 @@
-resource "azurerm_mssql_server" "mssql_server" {
+resource "azurerm_mssql_server" "mssql_server_sample" {
   name                         = "${var.project_name}${var.environment}"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = var.location
@@ -15,9 +15,9 @@ resource "azurerm_mssql_server" "mssql_server" {
   }
 }
 
-resource "azurerm_mssql_database" "mssql_database" {
+resource "azurerm_mssql_database" "mssql_database_sample" {
   name      = "${var.project_name}sample"
-  server_id = azurerm_mssql_server.mssql_server.id
+  server_id = azurerm_mssql_server.mssql_server_sample.id
 
   tags = {
     Project     = "${var.project_name}sample"
