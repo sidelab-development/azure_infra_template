@@ -30,7 +30,7 @@ resource "azurerm_key_vault" "kv_sample" {
 resource "azurerm_key_vault_secret" "key_vault_secret" {
   name         = "sample"
   value        = "value"
-  key_vault_id = azurerm_key_vault.kv.id
+  key_vault_id = azurerm_key_vault.kv_sample.id
 
   tags = {
     "Project" : var.project_name
@@ -43,7 +43,7 @@ resource "azurerm_key_vault_secret" "key_vault_secret" {
 
 resource "azurerm_key_vault_certificate" "key_vault_certificate" {
   name         = "sample"
-  key_vault_id = azurerm_key_vault.kv.id
+  key_vault_id = azurerm_key_vault.kv_sample.id
 
   certificate {
     contents = filebase64("file_path")
