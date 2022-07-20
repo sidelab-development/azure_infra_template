@@ -4,7 +4,10 @@ variable "project_name" {
 variable "environments" {
   default = {
     dev = {
-      location = "eastus2"
+      location = "eastus"
+    }
+    qa = {
+      location = "eastus"
     }
     hml = {
       location = "eastus2"
