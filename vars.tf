@@ -10,10 +10,10 @@ variable "environments" {
       location = "eastus"
     }
     hml = {
-      location = "eastus2"
+      location = "eastus"
     }
     prod = {
-      location = "eastus2"
+      location = "eastus"
     }
   }
 }

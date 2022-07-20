@@ -1,4 +1,4 @@
-resource "azurerm_storage_account" "storage_account" {
+resource "azurerm_storage_account" "storage_account_sample" {
   name                     = "${var.project_name}${var.environment}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
@@ -21,5 +21,5 @@ resource "azurerm_storage_account" "storage_account" {
 
 resource "azurerm_storage_container" "container" {
   name                 = "sample"
-  storage_account_name = azurerm_storage_account.storage_account.name
+  storage_account_name = azurerm_storage_account.storage_account_sample.name
 }

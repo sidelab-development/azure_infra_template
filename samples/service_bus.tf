@@ -1,4 +1,4 @@
-resource "azurerm_servicebus_namespace" "sb_namespace" {
+resource "azurerm_servicebus_namespace" "sb_namespace_sample" {
   name                = "${var.project_name}${var.environment}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
@@ -13,7 +13,7 @@ resource "azurerm_servicebus_namespace" "sb_namespace" {
   }
 }
 
-resource "azurerm_servicebus_queue" "queue" {
+resource "azurerm_servicebus_queue" "queue_sample" {
   name         = "sample"
-  namespace_id = azurerm_servicebus_namespace.sb_namespace.id
+  namespace_id = azurerm_servicebus_namespace.sb_namespace_sample.id
 }
