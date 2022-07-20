@@ -26,3 +26,35 @@ resource "azurerm_key_vault" "kv_sample" {
     ServiceName = "${var.project_name}${var.environment}"
   }
 }
+
+resource "azurerm_key_vault_secret" "key_vault_secret" {
+  name         = "sample"
+  value        = "value"
+  key_vault_id = azurerm_key_vault.kv_sample.id
+
+  tags = {
+    "Project" : var.project_name
+    "Environment" : var.environment
+    "Service" : "key_vault_secret"
+    "ServiceName" : "sample"
+    "Location" : var.location
+  }
+}
+
+resource "azurerm_key_vault_certificate" "key_vault_certificate" {
+  name         = "sample"
+  key_vault_id = azurerm_key_vault.kv_sample.id
+
+  certificate {
+    contents = filebase64("file_path")
+    password = "password"
+  }
+
+  tags = {
+    "Project" : var.project_name
+    "Environment" : var.environment
+    "Service" : "key_vault_secret"
+    "ServiceName" : "sample"
+    "Location" : var.location
+  }
+}

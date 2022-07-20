@@ -6,6 +6,9 @@ variable "environments" {
     dev = {
       location = "eastus"
     }
+    qa = {
+      location = "eastus"
+    }
     hml = {
       location = "eastus"
     }
