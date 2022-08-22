@@ -110,6 +110,14 @@ else
   echo -e "${WHITE}> Downloading content...${RESET}"
   curl -s "${BASE_URL}/${CHOICE}.tf" >> $FILE_PATH;
 
+  if [[ "${CHOICE}" == "function_app" ]];
+  then
+    # CHECK IF ALREADY EXIST FILE WITH SAME NAME
+    while ! test -f "${INFRA_DIR}/app_insights.tf"; do
+      curl -s "${BASE_URL}/app_insights.tf" >> "${INFRA_DIR}/app_insights.tf";
+    done
+  fi;
+
   # REPLACE 'sample' FOR PROVDED NAME IN ARG '-n'
   sed -i "s/sample/$name/g" $FILE_PATH
 
