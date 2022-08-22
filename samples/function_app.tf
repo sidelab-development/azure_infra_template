@@ -30,22 +30,6 @@ resource "azurerm_service_plan" "service_plan_sample" {
   }
 }
 
-# optional
-resource "azurerm_application_insights" "application_insights_sample" {
-  name                = "${var.project_name}-sample-${var.environment}"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = var.location
-  application_type    = "Node.JS" # ios, java, MobileCenter, Node.JS, store, web, other
-
-  tags = {
-    Project     = var.project_name
-    Environment = var.environment
-    Service     = "application_insights"
-    Location    = var.location
-    ServiceName = "${var.project_name}-sample-${var.environment}"
-  }
-}
-
 resource "azurerm_linux_function_app" "function_app_sample" {
   name                       = "${var.project_name}-sample-${var.environment}"
   resource_group_name        = azurerm_resource_group.rg.name
@@ -55,8 +39,8 @@ resource "azurerm_linux_function_app" "function_app_sample" {
   storage_account_access_key = azurerm_storage_account.func_app_storage_account_sample.primary_access_key
 
   site_config {
-    application_insights_connection_string = azurerm_application_insights.application_insights_sample.connection_string
-    application_insights_key               = azurerm_application_insights.application_insights_sample.instrumentation_key
+    application_insights_connection_string = azurerm_application_insights.application_insights.connection_string
+    application_insights_key               = azurerm_application_insights.application_insights.instrumentation_key
 
     application_stack {
       node_version = "16"
