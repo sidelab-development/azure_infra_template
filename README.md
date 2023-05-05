@@ -1,64 +1,34 @@
-## Customize
+## Requirements
 
-Search for "sample" in the code and change it to your own name.
+- Contributor access to the Azure Subscription of the project
+- Contributor access to the Storage Account where the Terraform state is stored
+- Azure CLI
 
 ## Authentication
 
-- Login on Azure
+- Set the subscription
 
 ```bash
-az login
+az account set --subscription=SUBSCRIPTION_ID # You can get it with az account list
 ```
 
-- List account to get correct subscription
-
-```bash
-az account list
-```
-
-- Set subscription
-
-```bash
-az account set --subscription="SUBSCRIPTION_ID"
-```
-
-## First time setup
-
-```bash
-SUBSCRIPTION_ID=<SUBSCRIPTION_ID>
-LOCATION=<LOCATION>
-PROJECT_NAME=<PROJECT_NAME>
-RESOURCE_GROUP_NAME="${PROJECT_NAME}tfstate"
-STORAGE_ACCOUNT_NAME="${PROJECT_NAME}tfstate"
-CONTAINER_NAME="tfstate"
-
-# Create resource group
-az group create --location $LOCATION \
-	--name $RESOURCE_GROUP_NAME \
-	--subscription $SUBSCRIPTION_ID
-
-# Create storage account
-az storage account create --name $STORAGE_ACCOUNT_NAME \
-	--location $LOCATION \
-	--sku Standard_LRS \
-	--encryption-services blob \
-	--resource-group $RESOURCE_GROUP_NAME
-
-# Create blob container
-az storage container create --name $CONTAINER_NAME \
-	--account-name $STORAGE_ACCOUNT_NAME \
-	--fail-on-exist
-```
+More details: [Authenticating using the Azure CLI](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/azure_cli).
 
 ## Using Terraform
 
-- Init modules
+- Init back end and modules
 
 ```bash
 terraform init
 ```
 
-- Check changes
+- (Optional) Validate changes
+
+```bash
+terraform validate
+```
+
+- (Optional) Check changes
 
 ```bash
 terraform plan
@@ -70,16 +40,10 @@ terraform plan
 terraform apply
 ```
 
-## Tools
+## Provisioning new resources
 
-- [Azure Terraform Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureterraform)
-
-## Examples
+The resources that are going to be provisioned are defined in the [app_infra folder](./app_infra/). In the [samples folder](./samples/) you can find some examples of how to provision different resources. For a more detailed explanation, check the links below:
 
 - [Using Terraform's Azure Provider to provision resources in Azure](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples)
-
-## Official Docs
-
 - [Terraform on Azure documentation - docs.microsoft.com](https://docs.microsoft.com/en-us/azure/developer/terraform/)
-
 - [azurerm provider - registry.terraform.io](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)

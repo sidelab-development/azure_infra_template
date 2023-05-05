@@ -1,19 +1,17 @@
 variable "project_name" {
-  default = "sample"
+  default = "PROJECT_NAME" # Change this to your project name
 }
 variable "environments" {
   default = {
     dev = {
-      location = "eastus"
+      location = "LOCATION" # Change this to your desired location. e.g. westus, eastus, etc.
     }
-    qa = {
-      location = "eastus"
-    }
-    hml = {
-      location = "eastus"
-    }
-    prod = {
-      location = "eastus"
-    }
+    # Uncomment the below lines to add more environments
+    # hml = {
+    #   location = "LOCATION"
+    # }
+    # prod = {
+    #   location = "LOCATION"
+    # }
   }
 }
