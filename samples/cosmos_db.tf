@@ -19,6 +19,8 @@ resource "azurerm_cosmosdb_account" "cosmosdb_sample" {
     Service     = "cosmosdb"
     Location    = var.location
     ServiceName = "${var.project_name}${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 output "cosmosdb_sample_endpoint" {

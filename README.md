@@ -14,6 +14,10 @@ az account set --subscription=SUBSCRIPTION_ID # You can get it with az account l
 
 More details: [Authenticating using the Azure CLI](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/azure_cli).
 
+## Setup provider
+
+- Access [provider](./provider.tf) file and follow the comments.
+
 ## Using Terraform
 
 - Init back end and modules

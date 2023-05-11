@@ -10,5 +10,7 @@ resource "azurerm_application_insights" "application_insights" {
     Service     = "application_insights"
     Location    = var.location
     ServiceName = "${var.project_name}${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }

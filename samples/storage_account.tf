@@ -16,6 +16,8 @@ resource "azurerm_storage_account" "storage_account_sample" {
     Service     = "storage_account"
     Location    = var.location
     ServiceName = "${var.project_name}${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 

@@ -24,6 +24,8 @@ resource "azurerm_key_vault" "kv_sample" {
     Service     = "key_vault"
     Location    = var.location
     ServiceName = "${var.project_name}${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 
@@ -33,11 +35,13 @@ resource "azurerm_key_vault_secret" "key_vault_secret" {
   key_vault_id = azurerm_key_vault.kv_sample.id
 
   tags = {
-    "Project" : var.project_name
-    "Environment" : var.environment
-    "Service" : "key_vault_secret"
-    "ServiceName" : "sample"
-    "Location" : var.location
+    Project     = var.project_name
+    Environment = var.environment
+    Service     = "key_vault_secret"
+    ServiceName = "sample"
+    Location    = var.location
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 
@@ -51,10 +55,12 @@ resource "azurerm_key_vault_certificate" "key_vault_certificate" {
   }
 
   tags = {
-    "Project" : var.project_name
-    "Environment" : var.environment
-    "Service" : "key_vault_secret"
-    "ServiceName" : "sample"
-    "Location" : var.location
+    Project     = var.project_name
+    Environment = var.environment
+    Service     = "key_vault_secret"
+    ServiceName = "sample"
+    Location    = var.location
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }

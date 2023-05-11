@@ -11,5 +11,7 @@ resource "azurerm_cognitive_account" "ocr_service_sample" {
     Service     = "cognitive_account"
     Location    = var.location
     ServiceName = "sample-${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }

@@ -10,6 +10,8 @@ resource "azurerm_servicebus_namespace" "sb_namespace_sample" {
     Service     = "service_bus"
     Location    = var.location
     ServiceName = "${var.project_name}${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 

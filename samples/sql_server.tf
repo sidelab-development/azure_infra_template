@@ -12,12 +12,16 @@ resource "azurerm_mssql_server" "mssql_server_sample" {
     Service     = "mssql_server"
     Location    = var.location
     ServiceName = "${var.project_name}${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 
 resource "azurerm_mssql_database" "mssql_database_sample" {
-  name      = "${var.project_name}sample"
-  server_id = azurerm_mssql_server.mssql_server_sample.id
+  name        = "${var.project_name}sample"
+  server_id   = azurerm_mssql_server.mssql_server_sample.id
+  sku_name    = "Basic"
+  max_size_gb = 2
 
   tags = {
     Project     = "${var.project_name}sample"
@@ -25,5 +29,7 @@ resource "azurerm_mssql_database" "mssql_database_sample" {
     Service     = "mssql_database"
     Location    = var.location
     ServiceName = var.project_name
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }

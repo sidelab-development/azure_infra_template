@@ -1,14 +1,10 @@
-resource "azurerm_storage_account" "website_storage_account_sample" {
+resource "azurerm_storage_account" "sample_storage_account" {
   name                     = "${var.project_name}sample${var.environment}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-
-  static_website {
-    index_document     = "index.html"
-    error_404_document = "index.html"
-  }
+  is_hns_enabled           = "true"
 
   tags = {
     Project     = var.project_name
@@ -21,7 +17,7 @@ resource "azurerm_storage_account" "website_storage_account_sample" {
   }
 }
 
-output "portal_web_storage_account" {
-  value       = azurerm_storage_account.website_storage_account_sample.name
-  description = "Name of the storage account that will be used for the website"
+resource "azurerm_storage_data_lake_gen2_filesystem" "gold_fs" {
+  name               = "gold"
+  storage_account_id = azurerm_storage_account.sample_storage_account.id
 }

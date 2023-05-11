@@ -6,7 +6,8 @@ variable "environments" {
     dev = {
       location = "LOCATION" # Change this to your desired location. e.g. westus, eastus, etc.
     }
-    # Uncomment the below lines to add more environments
+    # Uncomment the below lines to add more environments.
+    # Obs: you may need to create keyvault secrets for the new environments
     # hml = {
     #   location = "LOCATION"
     # }

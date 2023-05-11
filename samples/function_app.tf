@@ -11,6 +11,8 @@ resource "azurerm_storage_account" "func_app_storage_account_sample" {
     Service     = "storage_account"
     Location    = var.location
     ServiceName = "${var.project_name}sample${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 
@@ -27,6 +29,8 @@ resource "azurerm_service_plan" "service_plan_sample" {
     Service     = "service_plan"
     Location    = var.location
     ServiceName = "${var.project_name}-sample-${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 
@@ -43,10 +47,10 @@ resource "azurerm_linux_function_app" "function_app_sample" {
     application_insights_key               = azurerm_application_insights.application_insights.instrumentation_key
 
     application_stack {
-      node_version = "16"
+      node_version = "18"
       # dotnet_version     = "6.0"
       # java_version       = "11"
-      # python_version     = "3.9"
+      # python_version     = "3.10"
       # use_custom_runtime = true
       # docker {
       #   registry_url      = ""
@@ -69,6 +73,8 @@ resource "azurerm_linux_function_app" "function_app_sample" {
     Service     = "function_app"
     Location    = var.location
     ServiceName = "${var.project_name}-sample-${var.environment}"
+    Department  = "Development"
+    CreatedBy   = "Terraform"
   }
 }
 
