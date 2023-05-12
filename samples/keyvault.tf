@@ -31,40 +31,42 @@ resource "azurerm_key_vault" "kv_sample" {
   }
 }
 
-resource "azurerm_key_vault_secret" "key_vault_secret" {
-  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret
-  name         = "sample"
-  value        = "value"
-  key_vault_id = azurerm_key_vault.kv_sample.id
+# Uncomment the lines below to create a secret
+# resource "azurerm_key_vault_secret" "key_vault_secret" {
+#   # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret
+#   name         = "sample"
+#   value        = "value"
+#   key_vault_id = azurerm_key_vault.kv_sample.id
 
-  tags = {
-    Project     = var.project_name
-    Environment = var.environment
-    Service     = "key_vault_secret"
-    ServiceName = "sample"
-    Location    = var.location
-    Department  = "Development"
-    CreatedBy   = "Terraform"
-  }
-}
+#   tags = {
+#     Project     = var.project_name
+#     Environment = var.environment
+#     Service     = "key_vault_secret"
+#     ServiceName = "sample"
+#     Location    = var.location
+#     Department  = "Development"
+#     CreatedBy   = "Terraform"
+#   }
+# }
 
-resource "azurerm_key_vault_certificate" "key_vault_certificate" {
-  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_certificate
-  name         = "sample"
-  key_vault_id = azurerm_key_vault.kv_sample.id
+# Uncomment the lines below to create a certificate in key vault
+# resource "azurerm_key_vault_certificate" "key_vault_certificate" {
+#   # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_certificate
+#   name         = "sample"
+#   key_vault_id = azurerm_key_vault.kv_sample.id
 
-  certificate {
-    contents = filebase64("file_path")
-    password = "password"
-  }
+#   certificate {
+#     contents = filebase64("file_path")
+#     password = "password"
+#   }
 
-  tags = {
-    Project     = var.project_name
-    Environment = var.environment
-    Service     = "key_vault_certificate"
-    ServiceName = "sample"
-    Location    = var.location
-    Department  = "Development"
-    CreatedBy   = "Terraform"
-  }
-}
+#   tags = {
+#     Project     = var.project_name
+#     Environment = var.environment
+#     Service     = "key_vault_certificate"
+#     ServiceName = "sample"
+#     Location    = var.location
+#     Department  = "Development"
+#     CreatedBy   = "Terraform"
+#   }
+# }

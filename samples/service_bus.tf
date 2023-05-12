@@ -1,4 +1,4 @@
-resource "azurerm_servicebus_namespace" "sb_namespace_sample" {
+resource "azurerm_servicebus_namespace" "sb" {
   # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/servicebus_namespace
   name                = "${var.project_name}${var.environment}"
   resource_group_name = azurerm_resource_group.rg.name
@@ -16,7 +16,7 @@ resource "azurerm_servicebus_namespace" "sb_namespace_sample" {
   }
 }
 
-resource "azurerm_servicebus_queue" "queue_sample" {
+resource "azurerm_servicebus_queue" "sample_queue" {
   name         = "sample"
-  namespace_id = azurerm_servicebus_namespace.sb_namespace_sample.id
+  namespace_id = azurerm_servicebus_namespace.sb.id
 }

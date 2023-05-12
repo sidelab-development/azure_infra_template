@@ -1,6 +1,6 @@
-resource "azurerm_storage_account" "website_storage_account_sample" {
+resource "azurerm_storage_account" "sample_web" {
   # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
-  name                     = "${var.project_name}sample${var.environment}"
+  name                     = "${var.project_name}sampleweb${var.environment}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
   account_tier             = "Standard"
@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "website_storage_account_sample" {
     Environment = var.environment
     Service     = "storage_account"
     Location    = var.location
-    ServiceName = "${var.project_name}sample${var.environment}"
+    ServiceName = "${var.project_name}sampleweb${var.environment}"
     Department  = "Development"
     CreatedBy   = "Terraform"
   }

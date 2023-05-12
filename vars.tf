@@ -8,6 +8,7 @@ variable "environments" {
     }
     # Uncomment the below lines to add more environments.
     # Obs: you may need to create keyvault secrets for the new environments
+    # Obs2: you may need setup some resources manually, like synapse workspace
     # hml = {
     #   location = "LOCATION"
     # }
