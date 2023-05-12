@@ -8,8 +8,8 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "myprojecttfstate" # This resource group must already exist
-    storage_account_name = "myprojecttfstate" # This storage account must already exist
+    resource_group_name  = "myprojecttfstate" # Change it to your resource group name
+    storage_account_name = "myprojecttfstate" # Change it to your storage account name
     container_name       = "tfstate"
     key                  = "infra.tfstate"
   }

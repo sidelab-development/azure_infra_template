@@ -1,4 +1,5 @@
 resource "azurerm_storage_account" "func_app_storage_account_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
   name                     = "${var.project_name}sample${var.environment}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
@@ -17,6 +18,7 @@ resource "azurerm_storage_account" "func_app_storage_account_sample" {
 }
 
 resource "azurerm_service_plan" "service_plan_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/service_plan
   name                = "${var.project_name}-sample-${var.environment}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
@@ -35,6 +37,7 @@ resource "azurerm_service_plan" "service_plan_sample" {
 }
 
 resource "azurerm_linux_function_app" "function_app_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_function_app
   name                       = "${var.project_name}-sample-${var.environment}"
   resource_group_name        = azurerm_resource_group.rg.name
   location                   = var.location
@@ -76,9 +79,4 @@ resource "azurerm_linux_function_app" "function_app_sample" {
     Department  = "Development"
     CreatedBy   = "Terraform"
   }
-}
-
-output "function_app" {
-  value       = azurerm_linux_function_app.function_app_sample.name
-  description = "Name of the function app that will be used for the sample microservice"
 }

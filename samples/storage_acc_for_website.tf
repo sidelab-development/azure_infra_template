@@ -1,4 +1,5 @@
 resource "azurerm_storage_account" "website_storage_account_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
   name                     = "${var.project_name}sample${var.environment}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
@@ -21,7 +22,3 @@ resource "azurerm_storage_account" "website_storage_account_sample" {
   }
 }
 
-output "portal_web_storage_account" {
-  value       = azurerm_storage_account.website_storage_account_sample.name
-  description = "Name of the storage account that will be used for the website"
-}

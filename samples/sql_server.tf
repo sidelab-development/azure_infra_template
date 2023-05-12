@@ -1,4 +1,5 @@
 resource "azurerm_mssql_server" "mssql_server_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_server
   name                         = "${var.project_name}${var.environment}"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = var.location
@@ -18,6 +19,7 @@ resource "azurerm_mssql_server" "mssql_server_sample" {
 }
 
 resource "azurerm_mssql_database" "mssql_database_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_database
   name        = "${var.project_name}sample"
   server_id   = azurerm_mssql_server.mssql_server_sample.id
   sku_name    = "Basic"

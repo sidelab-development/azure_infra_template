@@ -1,4 +1,5 @@
 resource "azurerm_resource_group" "rg" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
   name     = "${var.project_name}-${var.environment}"
   location = var.location
 

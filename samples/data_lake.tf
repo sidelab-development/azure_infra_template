@@ -1,4 +1,5 @@
 resource "azurerm_storage_account" "sample_storage_account" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
   name                     = "${var.project_name}sample${var.environment}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
@@ -18,6 +19,7 @@ resource "azurerm_storage_account" "sample_storage_account" {
 }
 
 resource "azurerm_storage_data_lake_gen2_filesystem" "gold_fs" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_data_lake_gen2_filesystem
   name               = "gold"
   storage_account_id = azurerm_storage_account.sample_storage_account.id
 }

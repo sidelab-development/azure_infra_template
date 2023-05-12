@@ -1,9 +1,11 @@
 resource "random_password" "synapse_pass" {
+  # Reference https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
   length  = 16
   special = true
 }
 
 resource "azurerm_synapse_workspace" "synapse" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/synapse_workspace
   name                                 = "${var.project_name}-${var.environment}"
   resource_group_name                  = azurerm_resource_group.rg.name
   location                             = var.location
@@ -27,6 +29,7 @@ resource "azurerm_synapse_workspace" "synapse" {
 }
 
 resource "azurerm_key_vault_secret" "synapse_password" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret
   name         = "synapse-password"
   value        = random_password.ingestion_db_pass.result
   key_vault_id = azurerm_key_vault.kv.id

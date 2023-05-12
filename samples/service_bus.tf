@@ -1,4 +1,5 @@
 resource "azurerm_servicebus_namespace" "sb_namespace_sample" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/servicebus_namespace
   name                = "${var.project_name}${var.environment}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
